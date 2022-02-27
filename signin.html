@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.rtl.css">
+  <link rel="stylesheet" href="assets/css/styleTest/styleTest.css">
+<style>
+body
+ /* {font-family: Arial, Helvetica, sans-serif;} */
+* {box-sizing: border-box;}
+
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+/* .cancelbtn, .signupbtn {
+  float: center;
+  width: 50%;
+} */
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+ 
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+
+/*birthday */
+body {
+    padding:50px;
+    background-color:white;
+}
+.s-hidden {
+    visibility:hidden;
+    padding-right:10px;
+}
+.select {
+    cursor:pointer;
+    display:inline-block;
+    position:relative;
+    font:normal 11px/22px Arial, Sans-Serif;
+    color:black;
+    border:1px solid #ccc;
+}
+.styledSelect {
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-color:white;
+    padding:0 10px;
+    font-weight:bold;
+}
+.styledSelect:after {
+    content:"";
+    width:0;
+    height:0;
+    border:5px solid transparent;
+    border-color:black transparent transparent transparent;
+    position:absolute;
+    top:9px;
+    right:6px;
+}
+.styledSelect:active, .styledSelect.active {
+    background-color:#eee;
+}
+.options {
+    display:none;
+    position:absolute;
+    top:100%;
+    right:0;
+    left:0;
+    z-index:999;
+    margin:0 0;
+    padding:0 0;
+    list-style:none;
+    border:1px solid #ccc;
+    background-color:white;
+    -webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.options li {
+    padding:0 6px;
+    margin:0 0;
+    padding:0 10px;
+}
+.options li:hover {
+    background-color:#39f;
+    color:white;
+}
+.container{
+  padding: 15px;
+}
+SELECT{
+  padding: 5px;
+}
+input.date{
+  width:50px;
+  padding: 5px;
+}
+.month{
+  padding: 10px;
+}
+.p-style{
+	color: black;
+  background-color: none;
+  text-align: center;
+}
+.pp-style{
+  background-color: none;
+  text-align: center;
+}
+/* .alert{
+  background-color: #191919;
+  border: 0;
+  color:rgb(235, 85, 85);
+} */
+
+</style>
+</head>
+<body>
+<h2>فرم ورود</h2>
+
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">ورود</button>
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">ثبت نام</button>
+<div id="id01" class="modal">
+  [-showerror-]
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="بستن">&times;</span>
+  <form id= "signupform" method="post" class="modal-content" action="signup.php" data-parsley-validate="">
+    <div class="container">
+      <h1>ورود</h1>
+      <p>لطفا فرم را کامل پر کنید.</p>
+      <hr>
+      <label for="email||mobile||username"><b>ایمیل یا شماره موبایل یا نام کاربری</b></label>
+      <input type="text" placeholder="ایمیل یا شماره موبایل یا نام کاربری" name="email||mobile||username" required
+      data-parsley-required
+      data-parsley-required-message="وارد کردن ایمیل یا شماره موبایل یا نام کاربری اجباری است" >
+      <label for="password"><b>رمز عبور</b></label>
+      <input type="password" id="password" placeholder="رمز عبور را وارد کنید." name="password" required
+      data-parsley-required
+      data-parsley-required-message="وارد کردن رمز عبور اجباری است" 
+      data-parsley-type-message="رمز عبور را به صورت صحیح وارد کنید.">
+      <!-- <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p> -->
+
+      <div class="clearfix">
+        <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> -->
+        <button name= "submit" type="submit" class="signupbtn">ورود</button>
+      </div>
+    </div>
+    <p class="p-style">ثبت نام نکردید؟</p>
+    <a href="signin.php" class="pp-style">ثبت نام</a>
+  </form>
+</div>
+
+<script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
+
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+<script src="assets/parsley/parsley.min.js"></script>
+<script src="assets/parsley/i18n/fa.js"></script>
+<script>
+  // Iterate over each select element
+$('select').each(function () {
+
+// Cache the number of options
+var $this = $(this),
+    numberOfOptions = $(this).children('option').length;
+
+// Hides the select element
+$this.addClass('s-hidden');
+
+// Wrap the select element in a div
+$this.wrap('<div class="select"></div>');
+
+// Insert a styled div to sit over the top of the hidden select element
+$this.after('<div class="styledSelect"></div>');
+
+// Cache the styled div
+var $styledSelect = $this.next('div.styledSelect');
+
+// Show the first select option in the styled div
+$styledSelect.text($this.children('option').eq(0).text());
+
+// Insert an unordered list after the styled div and also cache the list
+var $list = $('<ul />', {
+    'class': 'options'
+}).insertAfter($styledSelect);
+
+// Insert a list item into the unordered list for each select option
+for (var i = 0; i < numberOfOptions; i++) {
+    $('<li />', {
+        text: $this.children('option').eq(i).text(),
+        rel: $this.children('option').eq(i).val()
+    }).appendTo($list);
+}
+
+// Cache the list items
+var $listItems = $list.children('li');
+
+// Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
+$styledSelect.click(function (e) {
+    e.stopPropagation();
+    $('div.styledSelect.active').each(function () {
+        $(this).removeClass('active').next('ul.options').hide();
+    });
+    $(this).toggleClass('active').next('ul.options').toggle();
+});
+
+// Hides the unordered list when a list item is clicked and updates the styled div to show the selected list item
+// Updates the select element to have the value of the equivalent option
+$listItems.click(function (e) {
+    e.stopPropagation();
+    $styledSelect.text($(this).text()).removeClass('active');
+    $this.val($(this).attr('rel'));
+    $list.hide();
+    /* alert($this.val()); Uncomment this for demonstration! */
+});
+
+// Hides the unordered list when clicking outside of it
+$(document).click(function () {
+    $styledSelect.removeClass('active');
+    $list.hide();
+});
+
+});
+// Get the modal
+var modal = document.getElementById('id01');
+
+// // When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// }
+var Days = [31,28,31,30,31,30,31,31,30,31,30,31];// index => month [0-11]
+$(document).ready(function(){
+    var option = '<option value="day">day</option>';
+    var selectedDay="day";
+    for (var i=1;i <= Days[0];i++){ //add option days
+        option += '<option value="'+ i + '">' + i + '</option>';
+    }
+    $('#day').append(option);
+    $('#day').val(selectedDay);
+
+    // var option = '<option value="month">month</option>';
+    // var selectedMon ="month";
+    // for (var i=1;i <= 12;i++){
+    //     option += '<option value="'+ i + '">' + i + '</option>';
+    // }
+    // $('#month').append(option);
+    // $('#month').val(selectedMon);
+
+    // var option = '<option value="month">month</option>';
+    // var selectedMon ="month";
+    // for (var i=1;i <= 12;i++){
+    //     option += '<option value="'+ i + '">' + i + '</option>';
+    // }
+    // $('#month2').append(option);
+    // $('#month2').val(selectedMon);
+  
+    var d = new Date();
+    var option = '<option value="year">year</option>';
+    selectedYear ="year";
+    for (var i=1930;i <= d.getFullYear();i++){// years start i
+        option += '<option value="'+ i + '">' + i + '</option>';
+    }
+    $('#year').append(option);
+    $('#year').val(selectedYear);
+});
+function isLeapYear(year) {
+    year = parseInt(year);
+    if (year % 4 != 0) {
+	      return false;
+	  } else if (year % 400 == 0) {
+	      return true;
+	  } else if (year % 100 == 0) {
+	      return false;
+	  } else {
+	      return true;
+	  }
+}
+
+function change_year(select)
+{
+    if( isLeapYear( $(select).val() ) )
+	  {
+		    Days[1] = 29;
+		    
+    }
+    else {
+        Days[1] = 28;
+    }
+    if( $("#month").val() == 2)
+		    {
+			       var day = $('#day');
+			       var val = $(day).val();
+			       $(day).empty();
+			       var option = '<option value="day">day</option>';
+			       for (var i=1;i <= Days[1];i++){ //add option days
+				         option += '<option value="'+ i + '">' + i + '</option>';
+             }
+			       $(day).append(option);
+			       if( val > Days[ month ] )
+			       {
+				          val = 1;
+			       }
+			       $(day).val(val);
+		     }
+  }
+
+function change_month(select) {
+    var day = $('#day');
+    var val = $(day).val();
+    $(day).empty();
+    var option = '<option value="day">day</option>';
+    var month = parseInt( $(select).val() ) - 1;
+    for (var i=1;i <= Days[ month ];i++){ //add option days
+        option += '<option value="'+ i + '">' + i + '</option>';
+    }
+    $(day).append(option);
+    if( val > Days[ month ] )
+    {
+        val = 1;
+    }
+    $(day).val(val);
+}
+</script>
+<script>
+$('#signupform').parsley().on('field:validated', function() {
+    //Error dare
+    console.log("error darad")
+})
+    .on('form:submit', function() {
+        console.log("everyThing Okey")
+        //return false; // Don't submit form for this demo
+    });
+</script>
+
+
+</body>
+</html>
